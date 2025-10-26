@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Treinamento Pokas Infinity</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons (para ícones) -->
+    <script type"module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Configuração de Cores e Fontes do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-orange': '#F97316', // Laranja vibrante
+                        'brand-dark': '#111827',   // Cinza escuro / Quase preto
+                        'brand-gray': '#1F2937',   // Cinza médio-escuro
+                        'brand-light': '#F3F4F6',  // Branco/Cinza claro
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'heading': ['Bebas Neue', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados */
+        .hero-bg {
+            /* Imagem de fundo genérica, pode ser substituída por uma da academia */
+            background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 1)), url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-button {
+            @apply bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg uppercase tracking-wider transition-all duration-300 transform hover:bg-orange-600 hover:scale-105;
+        }
+        .nav-link {
+            @apply text-white font-semibold tracking-wide uppercase transition-colors duration-300 hover:text-brand-orange;
+        }
+        .section-title {
+            @apply text-5xl md:text-6xl font-heading text-center text-white mb-4;
+        }
+        .section-subtitle {
+            @apply text-center text-brand-orange font-semibold uppercase tracking-wider mb-12;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-light font-sans antialiased">
+
+    <!-- ===== CABEÇALHO E NAVEGAÇÃO ===== -->
+    <header class="bg-brand-dark/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#inicio" class="flex-shrink-0">
+                <!-- ATUALIZADO: Novo link do postimg.cc -->
+                <img 
+                    src="https://i.postimg.cc/CKgQLP9m/logo-poquinha.png" 
+                    alt="Logo Pokas Infinity - Tigre" 
+                    class="h-16 w-auto"
+                    onerror="this.src='https://placehold.co/100x100/F97316/111827?text=PI'; this.onerror=null;"
+                >
+            </a>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#atividades" class="nav-link">Atividades</a>
+                <a href="#horarios" class="nav-link">Horários</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+            
+            <!-- Botão CTA Desktop -->
+            <div class="hidden md:block">
+                <a href="#cta" class="cta-button text-sm">Agende sua visita</a>
+            </div>
+
+            <!-- Botão Menu Móvel -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu Móvel (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-dark shadow-xl">
+            <a href="#inicio" class="block text-center text-white py-4 text-lg font-semibold border-b border-brand-gray hover:bg-brand-gray">Início</a>
+            <a href="#atividades" class="block text-center text-white py-4 text-lg font-semibold border-b border-brand-gray hover:bg-brand-gray">Atividades</a>
+            <a href="#horarios" class="block text-center text-white py-4 text-lg font-semibold border-b border-brand-gray hover:bg-brand-gray">Horários</a>
+            <a href="#depoimentos" class="block text-center text-white py-4 text-lg font-semibold border-b border-brand-gray hover:bg-brand-gray">Depoimentos</a>
+            <a href="#contato" class="block text-center text-white py-4 text-lg font-semibold hover:bg-brand-gray">Contato</a>
+            <div class="p-4">
+                <a href="#cta" class="cta-button w-full text-center">Agende sua visita</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== SEÇÃO HERO (INÍCIO) v1.0 ===== -->
+        <section id="inicio" class="hero-bg h-screen min-h-[700px] flex items-center justify-center text-center pt-24">
+            <div class="container mx-auto px-6">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-heading text-white uppercase leading-none">
+                    Desafie Seus Limites
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-heading text-brand-orange uppercase tracking-widest mt-2 mb-8">
+                    Conquiste Sua Melhor Versão
+                </h2>
+                <p class="text-lg md:text-xl text-brand-light max-w-2xl mx-auto mb-10">
+                    No Centro de Treinamento Pokas Infinity, combinamos equipamentos de ponta, 
+                    instrutores de elite e um ambiente motivador para você alcançar resultados reais.
+                </p>
+                <a href="#cta" class="cta-button text-lg">Comece sua jornada</a>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO ATIVIDADES ===== -->
+        <section id="atividades" class="py-24 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Nossas Atividades</h2>
+                <p class="section-subtitle">Encontre a modalidade perfeita para você</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <!-- Card Atividade 1: Musculação -->
+                    <div class="bg-brand-gray rounded-lg shadow-xl overflow-hidden text-center transition-all duration-300 transform hover:scale-105 hover:shadow-brand-orange/30">
+                        <div class="p-8">
+                            <ion-icon name="barbell-outline" class="text-7xl text-brand-orange mx-auto"></ion-icon>
+                            <h3 class="font-heading text-3xl text-white mt-4 mb-2">Musculação</h3>
+                            <p class="text-brand-light text-sm">Foco em hipertrofia e definição muscular com os melhores equipamentos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card Atividade 2: Crossfit -->
+                    <div class="bg-brand-gray rounded-lg shadow-xl overflow-hidden text-center transition-all duration-300 transform hover:scale-105 hover:shadow-brand-orange/30">
+                        <div class="p-8">
+                            <ion-icon name="flame-outline" class="text-7xl text-brand-orange mx-auto"></ion-icon>
+                            <h3 class="font-heading text-3xl text-white mt-4 mb-2">Crossfit</h3>
+                            <p class="text-brand-light text-sm">Treinamento de alta intensidade para máxima performance e resistência.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Atividade 3: Lutas -->
+                    <div class="bg-brand-gray rounded-lg shadow-xl overflow-hidden text-center transition-all duration-300 transform hover:scale-105 hover:shadow-brand-orange/30">
+                        <div class="p-8">
+                            <ion-icon name="fitness-outline" class="text-7xl text-brand-orange mx-auto"></ion-icon>
+                            <h3 class="font-heading text-3xl text-white mt-4 mb-2">Lutas</h3>
+                            <p class="text-brand-light text-sm">Aprenda defesa pessoal, disciplina e condicione seu corpo (Boxe, Jiu-Jitsu).</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Atividade 4: Funcional -->
+                    <div class="bg-brand-gray rounded-lg shadow-xl overflow-hidden text-center transition-all duration-300 transform hover:scale-105 hover:shadow-brand-orange/30">
+                        <div class="p-8">
+                            <ion-icon name="walk-outline" class="text-7xl text-brand-orange mx-auto"></ion-icon>
+                            <h3 class="font-heading text-3xl text-white mt-4 mb-2">Funcional</h3>
+                            <p class="text-brand-light text-sm">Treine movimentos do dia a dia, ganhando agilidade, equilíbrio e força.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Atividade 5: Pilates -->
+                    <div class="bg-brand-gray rounded-lg shadow-xl overflow-hidden text-center transition-all duration-300 transform hover:scale-105 hover:shadow-brand-orange/30">
+                        <div class="p-8">
+                            <ion-icon name="body-outline" class="text-7xl text-brand-orange mx-auto"></ion-icon>
+                            <h3 class="font-heading text-3xl text-white mt-4 mb-2">Pilates</h3>
+                            <p class="text-brand-light text-sm">Melhore sua postura, flexibilidade e fortaleça o core com precisão.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO DEPOIMENTOS ===== -->
+        <section id="depoimentos" class="py-24 bg-brand-dark">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">O que nossos alunos dizem</h2>
+                <p class="section-subtitle">Resultados reais de pessoas reais</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Depoimento 1 -->
+                    <div class="bg-brand-gray p-8 rounded-lg shadow-xl border-l-4 border-brand-orange">
+                        <p class="text-brand-light italic text-lg mb-6">"A Pokas Infinity mudou minha vida. Perdi 15kg e ganhei uma nova família. 
+                            Os instrutores são incríveis e a estrutura é impecável."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/60x60/F3F4F6/111827?text=JR" alt="Foto Aluno" class="w-14 h-14 rounded-full mr-4 border-2 border-brand-orange">
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Juliana Ribeiro</h4>
+                                <p class="text-brand-orange font-semibold">Aluna do Crossfit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Depoimento 2 -->
+                    <div class="bg-brand-gray p-8 rounded-lg shadow-xl border-l-4 border-brand-orange">
+                        <p class="text-brand-light italic text-lg mb-6">"Nunca pensei que gostaria de musculação. Hoje, não vivo sem. 
+                            O ambiente é motivador e sem julgamentos. Recomendo 100%!"</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/60x60/F3F4F6/111827?text=MS" alt="Foto Aluno" class="w-14 h-14 rounded-full mr-4 border-2 border-brand-orange">
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Marcos Silva</h4>
+                                <p class="text-brand-orange font-semibold">Aluno da Musculação</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Depoimento 3 -->
+                    <div class="bg-brand-gray p-8 rounded-lg shadow-xl border-l-4 border-brand-orange">
+                        <p class="text-brand-light italic text-lg mb-6">"O Pilates aqui é de outro nível. Minhas dores nas costas sumiram 
+                            e minha postura melhorou drasticamente. Professores atenciosos."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/60x60/F3F4F6/111827?text=CA" alt="Foto Aluno" class="w-14 h-14 rounded-full mr-4 border-2 border-brand-orange">
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Carla Andrade</h4>
+                                <p class="text-brand-orange font-semibold">Aluna do Pilates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO HORÁRIOS ===== -->
+        <section id="horarios" class="py-24 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Grade de Horários</h2>
+                <p class="section-subtitle">Planeje sua semana de treinos</p>
+                
+                <div class="overflow-x-auto rounded-lg shadow-xl border border-brand-gray">
+                    <table class="w-full min-w-[700px] text-center">
+                        <thead class="bg-brand-gray font-heading text-2xl">
+                            <tr>
+                                <th class="p-4 border-r border-b border-gray-700">Horário</th>
+                                <th class="p-4 border-r border-b border-gray-700">Segunda</th>
+                                <th class="p-4 border-r border-b border-gray-700">Terça</th>
+                                <th class="p-4 border-r border-b border-gray-700">Quarta</th>
+                                <th class="p-4 border-r border-b border-gray-700">Quinta</th>
+                                <th class="p-4 border-b border-gray-700">Sexta</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700">
+                            <!-- Horário: 06:00 - 07:00 -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">06:00 - 07:00</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Funcional</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Funcional</span></td>
+                                <td class="p-4"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                            </tr>
+                            <!-- Horário: 07:00 - 08:00 -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">07:00 - 08:00</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Pilates</span></td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Pilates</span></td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4"><span class="font-bold text-brand-orange">Pilates</span></td>
+                            </tr>
+                             <!-- Linha genérica para Musculação Livre (exemplo) -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">08:00 - 17:00</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4">Musculação Livre</td>
+                            </tr>
+                            <!-- Horário: 17:00 - 18:00 -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">17:00 - 18:00</td>
+                                <td classs="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Funcional</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Boxe)</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Funcional</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Boxe)</span></td>
+                                <td class="p-4">Musculação</td>
+                            </tr>
+                            <!-- Horário: 18:00 - 19:00 -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">18:00 - 19:00</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Jiu-Jitsu)</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Jiu-Jitsu)</span></td>
+                                <td class="p-4"><span class="font-bold text-brand-orange">Crossfit</span></td>
+                            </tr>
+                            <!-- Horário: 19:00 - 20:00 -->
+                             <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">19:00 - 20:00</td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Pilates</span></td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Pilates</span></td>
+                                <td class="p-4"><span class="font-bold text-brand-orange">Funcional</span></td>
+                            </tr>
+                            <!-- Horário: 20:00 - 21:00 -->
+                            <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">20:00 - 21:00</td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Boxe)</span></td>
+                                <td class="p-4 border-r border-gray-700">Musculação</td>
+                                <td class="p-4 border-r border-gray-700"><span class="font-bold text-brand-orange">Lutas (Jiu-Jitsu)</span></td>
+                                <td class="p-4">Musculação</td>
+                            </tr>
+                             <!-- Horário: 21:00 - 22:00 -->
+                             <tr class="bg-brand-dark hover:bg-brand-gray transition-colors">
+                                <td class="p-4 font-bold border-r border-gray-700">21:00 - 22:00</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4 border-r border-gray-700">Musculação Livre</td>
+                                <td class="p-4">Musculação Livre</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <p class="text-center mt-6 text-gray-400 text-sm">* A área de musculação está disponível para treino livre durante todo o horário de funcionamento.</p>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO GALERIA ===== -->
+        <section id="galeria" class="py-24 bg-brand-dark">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Nossa Estrutura</h2>
+                <p class="section-subtitle">Um ambiente feito para inspirar</p>
+                
+                <!-- Imagens de espaço reservado. Substitua pelos URLs reais da sua academia -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Área de Musculação" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='httpslogo.png';">
+                    </div>
+                     <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Box de Crossfit" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1f2937/ffffff?text=Academia';">
+                    </div>
+                     <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Área de Lutas" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1f2937/ffffff?text=Lutas';">
+                    </div>
+                     <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=920&q=80" alt="Estúdio de Pilates" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https.placehold.co/600x600/1f2937/ffffff?text=Pilates';">
+                    </div>
+                    <div class="group overflow-hidden rounded-lg shadow-xl col-span-2 aspect-video md:aspect-auto">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Área de Peso Livre" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/1f2937/ffffff?text=Peso+Livre';">
+S                    </div>
+                    <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1596357395104-ba989e72b2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Vestiário" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1f2937/ffffff?text=Vestiário';">
+                    </div>
+                    <div class="group overflow-hidden rounded-lg shadow-xl aspect-square">
+                        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Recepção" class="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1f2937/ffffff?text=Recepção';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO CTA FINAL ===== -->
+        <section id="cta" class="py-24 bg-brand-orange text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl md:text-6xl font-heading text-brand-dark uppercase">
+                    Não espere mais
+                </h2>
+                <p class="text-xl md:text-2xl text-white font-semibold mt-4 mb-10 max-w-3xl mx-auto">
+                    Agende sua visita experimental gratuita e sinta a energia da Pokas Infinity. 
+                    Estamos prontos para transformar seu treino.
+                </p>
+                <a href="https://wa.me/5511912345678?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20experimental%20na%20Pokas%20Infinity." target="_blank" class="cta-button bg-brand-dark text-white text-lg hover:bg-black inline-flex items-center">
+                    <ion-icon name="logo-whatsapp" class="text-2xl mr-2"></ion-icon>
+                    Agende sua visita agora
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer id="contato" class="py-20 bg-black text-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Coluna 1: Logo e Sobre -->
+                <div class="text-center md:text-left">
+                    <!-- ATUALIZADO: Novo link direto do Imgur -->
+                    <img 
+                        src="https://i.imgur.com/u5jJqg1.png" 
+                        alt="Logo Pokas Infinity" 
+                        class="h-20 w-auto mx-auto md:mx-0 mb-4"
+                        onerror="this.src='https://placehold.co/100x100/F97316/111827?text=PI'; this.onerror=null;"
+                    >
+                    <h4 class="font-heading text-3xl text-white mb-2">Pokas Infinity</h4>
+                    <p class="text-sm text-gray-400 max-w-xs mx-auto md:mx-0">
+                        Transformando corpos e mentes com força, energia e sofisticação.
+                    </p>
+                </div>
+                
+                <!-- Coluna 2: Contato e Localização -->
+                <div>
+                    <h5 class="font-heading text-2xl text-white mb-4 text-center md:text-left">Contato</h5>
+                    <ul class="space-y-3 text-center md:text-left">
+                        <li class="flex items-center justify-center md:justify-start">
+                            <ion-icon name="location-outline" class="text-brand-orange text-xl mr-3"></ion-icon>
+                            <span>Endereço: Esquina com - Rua 10, Av. do Contorno, Nº 02 - Centro, Itapagipe - MG, 38240-000</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <ion-icon name="call-outline" class="text-brand-orange text-xl mr-3"></ion-icon>
+                            <span>(34) 00000-0000</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <ion-icon name="mail-outline" class="text-brand-orange text-xl mr-3"></ion-icon>
+                            <span>contato@pokasinfinity.com.br</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Redes Sociais -->
+                <div>
+                    <h5 class="font-heading text-2xl text-white mb-4 text-center md:text-left">Siga-nos</h5>
+                    <div class="flex justify-center md:justify-start space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors" aria-label="Instagram">
+                            <ion-icon name="logo-instagram" class="text-4xl"></ion-icon>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors" aria-label="Facebook">
+                            <ion-icon name="logo-facebook" class="text-4xl"></ion-icon>
+                        </a>
+                        <a href="https://wa.me/5511912345678" target="_blank" class="text-gray-400 hover:text-brand-orange transition-colors" aria-label="Whatsapp">
+                            <ion-icon name="logo-whatsapp" class="text-4xl"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="mt-16 pt-8 border-t border-brand-gray text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Centro de Treinamento Pokas Infinity. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para Menu Móvel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+            // Alternar menu
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Fechar menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
